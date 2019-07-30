@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="row" id="customer" *ngIf="user.role==='customer'">
+    <div class="col s12 center-align">
+      <div class="row">
+        <h4>Customer</h4>
+      </div><hr>
+      <div class="row">
+        <a class="waves-effect waves-light" [routerLink]="['products']"><h5>Products</h5></a>
+      </div>
+      <div class="row">
+        <h5><a class="waves-effect waves-light" [routerLink]="['my-orders']">My Orders</a></h5>
+      </div>
+      <div class="row">
+        <a class="waves-effect waves-light"><h5 [routerLink]="['cart']">Cart</h5></a>
+      </div>
+    </div>
+  </div>
+  <div class="row" id="farmer" *ngIf="user.role==='farmer'">
+    <div class="col s12 center-align">
+      <div class="row">
+        <h4>Farmer</h4>
+      </div><hr>
+      <div class="row">
+        <a class="waves-effect waves-light" [routerLink]="['products']"><h5>Products</h5></a>
+      </div>
+      <div class="row">
+        <a class="waves-effect waves-light" [routerLink]="['my-orders']"><h5>My Orders</h5></a>
+      </div>
+      <div class="row">
+        <a class="waves-effect waves-light" [routerLink]="['products-panel']"><h5>Your Products</h5></a>
+      </div>
+      <div class="row">
+        <a class="waves-effect waves-light" [routerLink]="['image-upload']"><h5>Image Upload</h5></a>
+      </div>
+      <div class="row">
+        <a class="waves-effect waves-light" [routerLink]="['bulletin']"><h5>Bulletin/News/Job</h5></a>
+      </div>
+      <div class="row">
+        <a class="waves-effect waves-light"><h5 [routerLink]="['cart']">Cart</h5></a>
+      </div>
+    </div>
+  </div>
+  <div class="row" id="dealer" *ngIf="user.role==='dealer'">
+    <div class="col s12 center-align">
+      <div class="row">
+        <h4>Dealer</h4>
+      </div><hr>
+      <div class="row">
+        <a class="waves-effect waves-light" [routerLink]="['products-panel']"><h5>Your Products</h5></a>
+      </div>
+      <div class="row">
+        <a class="waves-effect waves-light" [routerLink]="['image-upload']"><h5>Image Upload</h5></a>
+      </div>
+      <div class="row">
+        <a class="waves-effect waves-light" [routerLink]="['add-job-post']"><h5>Post Jobs</h5></a>
+      </div>
+      <!-- <div class="row">
+        <a class="waves-effect waves-light"><h5>Orders</h5></a>
+      </div> -->
+    </div>
+  </div>
+</div>

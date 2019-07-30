@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+.row{
+    margin-bottom: 0px;
+}
+.modal .modal-content{
+  padding:12px;
+}
+.modal .modal-footer{
+  height:0px;
+  padding:0px;
+}
+p{
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+}

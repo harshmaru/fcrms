@@ -1,0 +1,15 @@
+.cart-card .card-panel{
+  padding:10px;
+}
+.cart-card .material-icons{
+
+}
+.cart-card .cart-icon{
+  margin-top:13px;
+}
+/* .cart-card{
+  font-size: 20px;
+} */
+.cart-card .cart-foot .row{
+  padding:0;
+}

@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="row">
+    <div class="card-panel">
+        <div class="row center">
+          <h5>My Order's History</h5>
+          <hr>
+        </div>
+        <div class="row center" *ngIf="orderIDs.length===0">
+          <h6>You Have No Orders</h6>
+          <h6><a routerLink="/products">Start Shopping.</a></h6>
+        </div>
+        <div class="row" *ngIf="orderIDs.length!==0">
+          <div class="card-panel z-depth-2" *ngFor="let orderid of orderIDs">
+            <div class="row">
+              <div class="col s8">Order Bag No.</div>
+              <div class="col s4 right">{{orderid}}</div>
+            </div>
+            <div class="row">
+              <hr>
+            </div>
+            <div class="row" *ngFor="let item of orders[orderid]">
+              <div class="row">
+                  <div class="col s6"><b>{{item.pname}}</b></div>
+                  <div class="col s6 right">Quantity : {{item.qty}}</div>
+              </div>
+              <div class="row">
+                <div class="col s6">Price : {{item.price}}</div>
+                <div class="col s6 right">Total : {{item.total}}</div>
+              </div>
+              <div class="row">
+                <hr>
+              </div>
+            </div>
+            <div class="row center">
+                <b>Bag Total : {{orders[orderid].total}}</b>
+              </div>
+            <div class="row">
+              <div>
+                <div class="row multi-steps-wrap">
+                  <ul class="list-unstyled multi-steps">
+                    <li class="job-status job-created" [ngClass]='(orders[orderid].status==="Confirmed")?["is-active"]:""'>Confirmed</li>
+                    <li class="job-status job-inprogress" [ngClass]='(orders[orderid].status==="Shipping")?["is-active"]:""'>Shipping</li>
+                    <li class="job-status job-completed " [ngClass]='(orders[orderid].status==="Delivered")?["is-active"]:""'>Delivered</li>
+                    <!-- <li class="job-status job-closed">Completed</li> -->
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>

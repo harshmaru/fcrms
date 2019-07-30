@@ -1,0 +1,40 @@
+<nav *ngIf="url!=='/login'">
+  <div class="nav-wrapper">
+    <a class="brand-logo" [routerLink]="['']">&nbsp;&nbsp;FCRMS</a>
+    <a data-target="mobile-demo" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
+    <a class="modal-trigger" data-target="cart-modal" *ngIf="url==='/products'"><span class="badge cart-badge">{{cartSvc.cart.length}}</span><i class="material-icons right">shopping_cart</i></a>
+    <a class="left" *ngIf="(url!=='/home') && (url!=='/')" (click)="goBack()"><i class="material-icons">arrow_back</i></a>
+    <ul class="right hide-on-med-and-down">
+      <!-- <li><h4>Welcome, {{user.fname}}</h4>
+          <a [routerLink]="['login']" (click)="localSvc.clear('user')">Logout</a>
+      </li> -->
+      <li><a class="dropdown-trigger" data-target="profile">Welcome, {{user.fname}}<i class="material-icons right">arrow_drop_down</i></a></li>
+    </ul>
+  </div>
+</nav>
+
+<ul id="profile" class="dropdown-content">
+  <!-- <li><a>Change Profile</a></li> -->
+  <!-- <li><a>Change Password</a></li> -->
+  <li class="divider"></li>
+  <li><a (click)="logout()">Logout</a></li>
+</ul>
+
+<ul class="sidenav" id="mobile-demo">
+  <li class="center-align"><i class="large material-icons">account_circle</i></li>
+  <li class="center-align">
+    <h5>{{user.fname | titlecase}} {{user.lname | titlecase}}</h5> {{user.role|titlecase}}
+    <!-- <h6>{{user.email}}</h6> -->
+  </li>
+  <!-- <li class="center-align">
+    <img class="" src="https://image.flaticon.com/icons/png/512/64/64096.png" width="120px">
+  </li> -->
+  <hr>
+  <!-- <li><a>Change Profile</a></li> -->
+  <!-- <li><a>Change Password</a></li> -->
+  <li><a class="sidenav-close" (click)="logout()">Logout</a></li>
+</ul>
+
+<div id="cart-modal" class="modal">
+  <cart></cart>
+</div>

@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    <div class="col s12 center-align">
+      <h5>Bulletin</h5>
+      <hr>
+    </div>
+    <div class="col s12 m6 l4" *ngFor="let post of posts; let i = index">
+      <div class="card-panel hoverable">
+        <div class="row">
+          <h5>{{post.post_title}}</h5>
+        </div>
+        <div class="row"><span class="new badge" data-badge-caption=""><b>{{post.post_type}}</b></span></div>
+        <div class="row">
+          <p class="truncate">{{post.post_description}}</p>
+        </div>
+        <div class="row">
+          <hr>
+        </div>
+        <div class="row center-align">
+          <a class="waves-effect waves-light modal-trigger" href="#bulletin-modal" (click)="selected_post=i">Read More ...</a>
+        </div>
+      </div>
+    </div>
+    <div id="bulletin-modal" class="modal">
+      <div class="modal-content">
+        <div class="row">
+          <h5>{{posts[selected_post].post_title}}</h5>
+        </div>
+        <div class="row">
+          <hr>
+        </div>
+        <div class="row center-align">
+          <img class="responsive-img" src="{{checkURL(posts[selected_post])}}">
+        </div>
+        <div class="row">
+          <p>{{posts[selected_post].post_description}}</p>
+        </div>
+      </div>
+      <hr>
+      <div class="modal-footer">
+        <a class="modal-close waves-effect waves-green btn-flat">Dismiss</a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,115 @@
+<div class="container">
+  <div class="cart-content">
+    <div class="row" *ngIf="url==='/'">
+      <br>
+    </div>
+    <div class="row">
+      <div class="center-align">
+        <h4 *ngIf="url==='/'">Cart</h4>
+        <h4 *ngIf="url==='/cart'">Checkout</h4>
+      </div>
+    </div>
+    <div class="row">
+      <hr />
+    </div>
+    <div class="row cart-card" *ngIf="cart.length !== 0">
+      <div class="row" *ngFor="let product of cart; let i=index;">
+        <div class="row">
+          <div class="col s2 valign-wrapper">
+            <a (click)="cartSvc.deleteProduct(product)"><i class="material-icons cart-icon">close</i></a>
+          </div>
+          <div class="col s10">
+            <p><b>{{ product.pname }}</b><span class="right">Rs. <b>{{product.price}}</b></span></p>
+            <p>Quantity : <span class="right"><a (click)="cartSvc.removeFromCart(product)"><i
+                    class="material-icons">remove</i></a> &nbsp;&nbsp;&nbsp;&nbsp; <span><b>{{product.qty}}</b>
+                  &nbsp;&nbsp;&nbsp;&nbsp; </span> <a (click)="cartSvc.addToCart(product)"><i
+                    class="material-icons">add</i></a> </span></p>
+          </div>
+        </div>
+        <div class="row" *ngIf="cart.length-1 !== i"><br></div>
+      </div>
+    </div>
+    <div class="row center-align" *ngIf="cart.length === 0">
+      <h5>Nothing in Cart Yet</h5>
+      <a routerLink="/products" (click)="dismissModal()">Start adding Products</a>
+    </div>
+    <span *ngIf="cart.length !== 0">
+      <div class="row">
+        <hr>
+      </div>
+      <div class="row valign-wrapper card-foot">
+        <div class="col s3 center-align"><a (click)="cartSvc.setCart([])"><i
+              class="material-icons">delete_sweep</i>Clear</a></div>
+        <div class="col s6 center-align">
+          <h6>Total : Rs.{{cartSvc.getTotalCart()}}</h6>
+        </div>
+        <div class="col s3 center-align" *ngIf="url==='/'"><a routerLink="/cart" (click)="dismissModal()"><i class="material-icons">check</i>Checkout</a></div>
+        <div class="col s3 center-align" *ngIf="url==='/cart'"><a (click)="processOrder()"><i class="material-icons">arrow_forward</i>Proceed</a></div>
+      </div>
+    </span>
+    <div class="row" *ngIf="url==='/'">
+      <br>
+    </div>
+  </div>
+  <div class="row" *ngIf="url==='/cart' && cart.length!==0">
+    <div class="row" id="address">
+      <div class="row">
+        <h5>Address</h5>
+      </div>
+      <div class="row">
+        <hr>
+      </div>
+      <div class="row center-align" *ngIf="(user['address']===null||user['address']===undefined)">
+        <a data-target="address-modal" class="modal-trigger" (click)="openAddressModal()"><i class="material-icons">add</i><br>Add Address</a>
+      </div>
+      <div id="address-modal" class="modal">
+        <add-address></add-address>
+      </div>
+      <div class="row"  *ngIf="(user['address']!==null&&user['address']!==undefined)">
+        <div class="col s10">
+          {{user['address']}}
+        </div>
+        <div class="col s2">
+          <a data-target="address-modal" class="modal-trigger" (click)="openAddressModal()">Change</a>
+        </div>
+      </div>
+      <!-- <div id="address-modal" class="modal">
+        <add-address></add-address>
+      </div> -->
+    </div>
+    <div class="row" id="payment">
+      <div class="row">
+        <h5>Payment</h5>
+      </div>
+      <div class="row">
+        <hr>
+      </div>
+      <div class="row">
+        <p>
+          <label>
+            <input name="group1" type="radio" id="cod" checked/>
+            <span>Cash On Delivery</span>
+          </label>
+        </p>
+        <p>
+          <label>
+            <input name="group1" type="radio" disabled="disabled" />
+            <span>Debit/Credit Card</span>
+          </label>
+        </p>
+        <p>
+          <label>
+            <input name="group1" type="radio" disabled="disabled" />
+            <span>UPI</span>
+          </label>
+        </p>
+        <p>
+          <label>
+            <input name="group1" type="radio" disabled="disabled" />
+            <span>Online Wallet</span>
+          </label>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

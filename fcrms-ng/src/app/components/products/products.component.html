@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="row">
+    <div class="card-panel" style="padding:0">
+      <div class="row">
+          <div class="col s10 nav-wrapper">
+              <div class="input-field">
+                  <input id="search" placeholder="Search Product" type="search" (keyup)="searchKeyword(search.value)" #search>
+                  <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                  <i (click)="search.value = '';searchKeyword('');" class="material-icons">close</i>
+                </div>
+            </div>
+            <div class="col s2 center">
+              <a class='dropdown-trigger' data-target='dropdown1' id="dropdown-trigger"><i class="material-icons">sort</i><br>Sort</a>
+              <ul id='dropdown1' class='dropdown-content'>
+                <li><a class="blue-text" (click)="sortFilter('featured');search.value=''">Featured</a></li>
+                <li class="divider"></li>
+                <li><a class="blue-text" (click)="sortFilter('htol')">High to Low</a></li>
+                <li class="divider"></li>
+                <li><a class="blue-text" (click)="sortFilter('ltoh')">Low to High</a></li>
+              </ul>
+            </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="card">
+      <div class="row">
+        <div class="col s12">
+          <h4>Products</h4>
+          <hr>
+        </div>
+        <div *ngIf="products.length>0">
+          <div class="col s12 m6 l6" *ngFor="let product of products">
+            <div class="card horizontal z-depth-2">
+              <div class="card-image">
+                <img class="responsive-img" src="{{checkURL(product)}}">
+              </div>
+              <div class="card-stacked">
+                <div class="card-content">
+                  <h5>{{product.pname}}</h5>
+                  <hr>
+                  <p>{{product.pdescription}}</p><br>
+                  <h6><b>Rs. {{product.price}}</b></h6>
+                </div>
+                <div class="card-action center-align">
+                  <a (click)="cartSvc.addToCart(product);M.toast({html: 'Product Added Successfully'})">Add to Cart</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row" *ngIf="products.length===0">
+          <div class="col s12 center">
+              <h5>No Products Found</h5>
+              <br>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

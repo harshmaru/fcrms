@@ -1,0 +1,78 @@
+<div class="container white z-depth-2 lr-cont">
+  <ul class="tabs blue">
+    <li class="tab col s3"><a class="white-text active" href="#login">login</a></li>
+    <li class="tab col s3"><a class="white-text" href="#register">register</a></li>
+  </ul>
+  <div id="login" class="col s12 m8 l6">
+    <form class="col s12 m8 l6">
+      <div class="form-container">
+        <h3 class="blue-text">Hello</h3>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="lemail" type="email" class="validate" required #lemail>
+            <label for="lemail">Email</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="lpassword" type="password" class="validate" required #lpassword>
+            <label for="lpassword">Password</label>
+          </div>
+        </div>
+        <div class="center-align row">
+          <button class="btn waves-effect waves-light blue" type="submit" name="action"
+            (click)="doEmailLogin($event,lemail.value,lpassword.value)">Connect</button>
+          <br>
+          <br>
+          <!-- <a>Forgotten password?</a> -->
+        </div>
+      </div>
+    </form>
+  </div>
+  <div id="register" class="col s12">
+    <form class="col s12">
+      <div class="form-container">
+        <h3 class="blue-text">Welcome</h3>
+        <div class="row">
+          <div class="input-field col s6 m6 l6">
+            <input id="rFirst" type="text" class="validate" #rfirst>
+            <label for="rFirst">First Name</label>
+          </div>
+          <div class="input-field col s6 m6 l6">
+            <input id="rLast" type="text" class="validate" #rlast>
+            <label for="rLast">Last Name</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="remail" type="email" class="validate" required #remail>
+            <label for="remail">Email</label>
+          </div>
+        </div>
+        <div class="input-field col s12">
+          <select #rrole required>
+            <option value="" disabled selected>Choose your option</option>
+            <option value="customer">Customer</option>
+            <option value="farmer">Farmer</option>
+            <option value="dealer">Dealer</option>
+          </select>
+          <label>Role</label>
+        </div>
+        <div class="row">
+          <div class="input-field col s12 m6 l6">
+            <input id="rpassword" type="password" class="validate" required #rpassword>
+            <label for="rpassword">Password</label>
+          </div>
+          <div class="input-field col s12 m6 l6">
+            <input id="rpassword-confirm" type="password" class="validate" required #rcpassword>
+            <label for="rpassword-confirm">Password Confirmation</label>
+          </div>
+        </div>
+        <div class="center-align">
+          <button class="btn waves-effect waves-light blue" type="submit" name="action"
+            (click)="doEmailRegister($event,rfirst.value,rlast.value,remail.value,rpassword.value,rcpassword.value,rrole.value)">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
